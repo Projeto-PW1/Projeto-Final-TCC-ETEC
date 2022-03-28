@@ -3,7 +3,6 @@ package br.com.pinguins.tcc.backend.services;
 
 import br.com.pinguins.tcc.backend.dtos.UsuarioDTO;
 import br.com.pinguins.tcc.backend.entities.Usuario;
-import br.com.pinguins.tcc.backend.exceptions.BusinessException;
 import br.com.pinguins.tcc.backend.exceptions.ResourceNotFoundException;
 import br.com.pinguins.tcc.backend.mappers.UsuarioMapper;
 import br.com.pinguins.tcc.backend.repositories.UsuarioRepository;

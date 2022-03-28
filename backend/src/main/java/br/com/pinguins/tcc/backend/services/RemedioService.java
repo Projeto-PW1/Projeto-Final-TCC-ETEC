@@ -1,9 +1,7 @@
 package br.com.pinguins.tcc.backend.services;
 
 import br.com.pinguins.tcc.backend.dtos.RemedioDTO;
-import br.com.pinguins.tcc.backend.dtos.UsuarioDTO;
 import br.com.pinguins.tcc.backend.entities.Remedio;
-import br.com.pinguins.tcc.backend.entities.Usuario;
 import br.com.pinguins.tcc.backend.exceptions.BusinessException;
 import br.com.pinguins.tcc.backend.exceptions.ResourceNotFoundException;
 import br.com.pinguins.tcc.backend.mappers.RemedioMapper;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RemedioService {

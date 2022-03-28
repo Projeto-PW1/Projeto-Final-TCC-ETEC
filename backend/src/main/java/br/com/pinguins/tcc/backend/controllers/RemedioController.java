@@ -1,11 +1,10 @@
 package br.com.pinguins.tcc.backend.controllers;
 
 import br.com.pinguins.tcc.backend.dtos.RemedioDTO;
-import br.com.pinguins.tcc.backend.dtos.UsuarioDTO;
-import br.com.pinguins.tcc.backend.entities.Remedio;
 import br.com.pinguins.tcc.backend.services.RemedioService;
-import br.com.pinguins.tcc.backend.services.UsuarioService;
+import br.com.pinguins.tcc.backend.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,7 +34,7 @@ public class RemedioController {
     public ResponseEntity<List<RemedioDTO>> findByNome(@PathVariable("nome") String nome) {
         List<RemedioDTO> remedioDTO = remedioService.findByNome(nome);
 
-        return ResponseEntity.ok(remedioDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(remedioDTO);
     }
 
     @PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE,
@@ -43,7 +42,7 @@ public class RemedioController {
     public ResponseEntity<RemedioDTO> save(@RequestBody RemedioDTO remedioDTO) {
         remedioService.save(remedioDTO);
 
-        return ResponseEntity.ok(remedioDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(remedioDTO);
     }
 
     @PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE,
@@ -51,13 +50,13 @@ public class RemedioController {
     public ResponseEntity<RemedioDTO> update(@PathVariable("id") Integer id, @RequestBody RemedioDTO remedio) {
         RemedioDTO remedioDTO = remedioService.updateById(id, remedio);
 
-        return ResponseEntity.ok().body(remedioDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(remedioDTO);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> deleteById(@PathVariable("id") Integer id) {
         remedioService.deleteById(id);
 
-        return ResponseEntity.ok("Apagado com sucesso!");
+        return ResponseEntity.status(HttpStatus.OK).body(MessageUtil.MESSAGE_DELETE_SUCCESS);
     }
 }

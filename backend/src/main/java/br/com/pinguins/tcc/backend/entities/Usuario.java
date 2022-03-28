@@ -18,7 +18,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id", unique = true, nullable = false)
+    //@Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
     @Column(nullable = false, length = 70)
@@ -30,9 +30,9 @@ public class Usuario {
     @Column(nullable = false, length = 70)
     private String senha;
 
-    /*@JsonIgnore
+   /* @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Lembrete> lembretes;*/
+    private List<Lembrete> lembretes; */
 
     public Usuario(){}
 
@@ -78,7 +78,7 @@ public class Usuario {
 
     /*public List<Lembrete> getLembretes() {
         return lembretes;
-    }*/
+    } */
 
     @Override
     public boolean equals(Object o) {

@@ -6,15 +6,15 @@ public class LembreteDTO {
 
     private Integer id;
     private String titulo;
-    private LocalDate data;
+    private LocalDate dataLembrete;
     private String descricao;
 
     public LembreteDTO(){}
 
-    public LembreteDTO(Integer id, String titulo, LocalDate data, String descricao) {
+    public LembreteDTO(Integer id, String titulo, LocalDate dataLembrete, String descricao) {
         this.id = id;
         this.titulo = titulo;
-        this.data = data;
+        this.dataLembrete = dataLembrete;
         this.descricao = descricao;
     }
 
@@ -34,12 +34,12 @@ public class LembreteDTO {
         this.titulo = titulo;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDate getDataLembrete() {
+        return dataLembrete;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataLembrete(LocalDate dataLembrete) {
+        this.dataLembrete = dataLembrete;
     }
 
     public String getDescricao() {

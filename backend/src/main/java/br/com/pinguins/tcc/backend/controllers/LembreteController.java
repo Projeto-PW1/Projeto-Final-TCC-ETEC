@@ -1,7 +1,8 @@
 package br.com.pinguins.tcc.backend.controllers;
 
+import br.com.pinguins.tcc.backend.dtos.LembreteDTO;
 import br.com.pinguins.tcc.backend.dtos.UsuarioDTO;
-import br.com.pinguins.tcc.backend.services.UsuarioService;
+import br.com.pinguins.tcc.backend.services.LembreteService;
 import br.com.pinguins.tcc.backend.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,42 +20,44 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/usuarios")
-public class UsuarioController {
+@RequestMapping(value = "/lembretes")
+public class LembreteController {
 
     @Autowired
-    private UsuarioService usuarioService;
+    private LembreteService service;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<UsuarioDTO>> findAll() {
-        return ResponseEntity.ok(usuarioService.findAll());
+    @GetMapping
+    public ResponseEntity<List<LembreteDTO>> findAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping(value = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UsuarioDTO> findById(@PathVariable("id") Integer id) {
-        UsuarioDTO usuarioDTO = usuarioService.findById(id);
+    public ResponseEntity<LembreteDTO> findById(@PathVariable("id") Integer id) {
+        LembreteDTO lembreteDTO = service.findById(id);
 
-        return ResponseEntity.ok(usuarioDTO);
+        return ResponseEntity.ok(lembreteDTO);
     }
 
     @PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UsuarioDTO> save(@RequestBody UsuarioDTO usuarioDTO) {
-        usuarioService.save(usuarioDTO);
+    public ResponseEntity<LembreteDTO> save(@RequestBody LembreteDTO lembreteDTO) {
+        service.save(lembreteDTO);
 
-        return ResponseEntity.ok(usuarioDTO);
+        return ResponseEntity.ok(lembreteDTO);
     }
 
     @PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UsuarioDTO> update(@PathVariable("id") Integer id, @RequestBody UsuarioDTO user) {
-        UsuarioDTO usuarioDTO = usuarioService.updateById(id, user);
+    public ResponseEntity<LembreteDTO> updateById(@PathVariable("id") Integer id, @RequestBody LembreteDTO lembrete) {
+        LembreteDTO lembreteDTO = service.updateById(id, lembrete);
 
-        return ResponseEntity.ok().body(usuarioDTO);
+        return ResponseEntity.ok().body(lembreteDTO);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> deleteById(@PathVariable("id") Integer id) {
-        usuarioService.deleteById(id);
+        service.deleteById(id);
 
         return ResponseEntity.status(HttpStatus.OK).body(MessageUtil.MESSAGE_DELETE_SUCCESS);
+
     }
+
 }

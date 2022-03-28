@@ -23,20 +23,20 @@ public class Lembrete {
     private String titulo;
 
     @Column(nullable = false)
-    private LocalDate data;
+    private LocalDate dataLembrete;
 
     private String descricao;
 
-    //@ManyToOne
-    //@JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user"))
-    //private Usuario usuario;
+    /*@ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user"))
+    private Usuario usuario; */
 
     public Lembrete(){}
 
-    public Lembrete(Integer id, String titulo, LocalDate data, String descricao, Usuario usuario) {
+    public Lembrete(Integer id, String titulo, LocalDate dataLembrete, String descricao, Usuario usuario) {
         this.id = id;
         this.titulo = titulo;
-        this.data = data;
+        this.dataLembrete = dataLembrete;
         this.descricao = descricao;
         //this.usuario = usuario;
     }
@@ -57,12 +57,12 @@ public class Lembrete {
         this.titulo = titulo;
     }
 
-    public LocalDate getNotificacao() {
-        return data;
+    public LocalDate getDataLembrete() {
+        return dataLembrete;
     }
 
-    public void setNotificacao(LocalDate data) {
-        this.data = data;
+    public void setDataLembrete(LocalDate dataLembrete) {
+        this.dataLembrete = dataLembrete;
     }
 
     public String getDescricao() {

@@ -16,15 +16,17 @@ import java.util.List;
 @Service
 public class RemedioService {
 
-    @Autowired
-    private RemedioRepository repository;
+    private final RemedioRepository repository;
+    private final RemedioMapper mapper;
 
     @Autowired
-    private RemedioMapper mapper;
+    public RemedioService(RemedioRepository repository, RemedioMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     @Transactional(readOnly = true)
     public List<RemedioDTO> findAll() {
-
         List<Remedio> remedioList = repository.findAll();
 
         return mapper.dtoList(remedioList);

@@ -12,16 +12,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UsuarioService {
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final UsuarioMapper mapper;
 
     @Autowired
-    private UsuarioMapper mapper;
+    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioMapper mapper) {
+        this.usuarioRepository = usuarioRepository;
+        this.mapper = mapper;
+    }
 
     @Transactional(readOnly = true)
     public List<UsuarioDTO> findAll() {

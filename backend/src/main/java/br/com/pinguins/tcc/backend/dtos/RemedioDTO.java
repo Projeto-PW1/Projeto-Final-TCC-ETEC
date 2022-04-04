@@ -10,12 +10,6 @@ public class RemedioDTO {
 
     public RemedioDTO(){}
 
-    public RemedioDTO(Integer id, String nome, String descricao) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-    }
-
     public RemedioDTO(Remedio remedio) {
         id = remedio.getId();
         nome = remedio.getNome();

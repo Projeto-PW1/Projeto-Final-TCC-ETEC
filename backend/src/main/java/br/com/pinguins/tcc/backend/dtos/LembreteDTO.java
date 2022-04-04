@@ -1,5 +1,7 @@
 package br.com.pinguins.tcc.backend.dtos;
 
+import br.com.pinguins.tcc.backend.entities.Lembrete;
+
 import java.time.LocalDate;
 
 public class LembreteDTO {
@@ -11,11 +13,11 @@ public class LembreteDTO {
 
     public LembreteDTO(){}
 
-    public LembreteDTO(Integer id, String titulo, LocalDate dataLembrete, String descricao) {
-        this.id = id;
-        this.titulo = titulo;
-        this.dataLembrete = dataLembrete;
-        this.descricao = descricao;
+    public LembreteDTO(Lembrete lembrete) {
+        id = lembrete.getId();
+        titulo = lembrete.getTitulo();
+        dataLembrete = lembrete.getDataLembrete();
+        descricao = lembrete.getDescricao();
     }
 
     public Integer getId() {

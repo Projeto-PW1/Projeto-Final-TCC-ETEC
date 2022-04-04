@@ -22,8 +22,12 @@ import java.util.List;
 @RequestMapping(value = "/remedios")
 public class RemedioController {
 
+    private final RemedioService remedioService;
+
     @Autowired
-    private RemedioService remedioService;
+    public RemedioController(RemedioService remedioService) {
+        this.remedioService = remedioService;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<RemedioDTO>> findAll() {

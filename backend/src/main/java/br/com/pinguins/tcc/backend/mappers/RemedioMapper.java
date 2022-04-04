@@ -14,6 +14,7 @@ public class RemedioMapper {
         Remedio remedio = new Remedio();
 
         remedio.setId(dto.getId());
+        remedio.setId(dto.getId());
         remedio.setNome(dto.getNome());
         remedio.setDescricao(dto.getDescricao());
 
@@ -24,12 +25,13 @@ public class RemedioMapper {
         RemedioDTO dto = new RemedioDTO();
 
         dto.setId(remedio.getId());
+        dto.setId(remedio.getId());
         dto.setNome(remedio.getNome());
         dto.setDescricao(remedio.getDescricao());
         return dto;
     }
 
     public List<RemedioDTO> dtoList(List<Remedio> listUser) {
-        return listUser.stream().map(x -> new RemedioDTO()).collect(Collectors.toList());
+        return listUser.stream().map(RemedioDTO::new).collect(Collectors.toList());
     }
 }

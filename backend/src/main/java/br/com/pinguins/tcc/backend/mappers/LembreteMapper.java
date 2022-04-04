@@ -13,6 +13,7 @@ public class LembreteMapper {
     public Lembrete toEntity(LembreteDTO dto) {
         Lembrete lembrete = new Lembrete();
 
+        lembrete.setId(dto.getId());
         lembrete.setTitulo(dto.getTitulo());
         lembrete.setDataLembrete(dto.getDataLembrete());
         lembrete.setDescricao(dto.getDescricao());
@@ -23,6 +24,7 @@ public class LembreteMapper {
     public LembreteDTO toDto(Lembrete lembrete) {
         LembreteDTO dto = new LembreteDTO();
 
+        dto.setId(lembrete.getId());
         dto.setTitulo(lembrete.getTitulo());
         dto.setDataLembrete(lembrete.getDataLembrete());
         dto.setDescricao(lembrete.getDescricao());
@@ -31,6 +33,6 @@ public class LembreteMapper {
     }
 
     public List<LembreteDTO> dtoList(List<Lembrete> listUser) {
-        return listUser.stream().map(x -> new LembreteDTO()).collect(Collectors.toList());
+        return listUser.stream().map(LembreteDTO::new).collect(Collectors.toList());
     }
 }

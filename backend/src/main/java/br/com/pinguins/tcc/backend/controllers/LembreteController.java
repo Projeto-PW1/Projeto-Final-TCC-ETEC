@@ -23,8 +23,12 @@ import java.util.List;
 @RequestMapping(value = "/lembretes")
 public class LembreteController {
 
+    private final LembreteService service;
+
     @Autowired
-    private LembreteService service;
+    public LembreteController(LembreteService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<LembreteDTO>> findAll() {

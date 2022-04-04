@@ -15,11 +15,14 @@ import java.util.List;
 @Service
 public class LembreteService {
 
+    private final LembreteRepository repository;
+    private final LembreteMapper mapper;
+
     @Autowired
-    private LembreteRepository repository;
-
-    private LembreteMapper mapper;
-
+    public LembreteService(LembreteRepository repository, LembreteMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     @Transactional(readOnly = true)
     public List<LembreteDTO> findAll() {
@@ -60,9 +63,9 @@ public class LembreteService {
         Lembrete lembrete = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(MessageUtil.MESSAGE_USER_NOT_FOUND));
 
-        lembrete.setTitulo(lembrete.getTitulo());
-        lembrete.setDataLembrete(lembrete.getDataLembrete());
-        lembrete.setDescricao(lembrete.getDescricao());
+        lembrete.setTitulo(lembreteDTO.getTitulo());
+        lembrete.setDataLembrete(lembreteDTO.getDataLembrete());
+        lembrete.setDescricao(lembreteDTO.getDescricao());
 
         repository.save(lembrete);
 

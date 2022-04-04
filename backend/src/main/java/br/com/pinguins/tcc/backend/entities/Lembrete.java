@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
 @Entity
@@ -25,8 +26,12 @@ public class Lembrete {
     @Column(nullable = false)
     private LocalDate dataLembrete;
 
+    // TODO - FAZER O LOCALTIME
+    //private LocalTime horarioLembrete;
+
     private String descricao;
 
+    // TODO - FAZER O ManyToOne
     /*@ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user"))
     private Usuario usuario; */

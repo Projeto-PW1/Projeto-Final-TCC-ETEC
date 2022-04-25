@@ -22,3 +22,5 @@
 ### Tela de Adicionar Lembrete
 <img src= "https://user-images.githubusercontent.com/83253328/165191968-1a6e5379-60a8-4669-bb74-6585373dfa4c.png" width="400" height="790">
 
+### Tela de Histórico
+<img src= "https://user-images.githubusercontent.com/83253328/165192173-4d67c11d-4d71-4eaa-b8df-e721b2db5723.png" width="400" height="790">

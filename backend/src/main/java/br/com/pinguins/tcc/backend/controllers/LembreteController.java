@@ -1,7 +1,6 @@
 package br.com.pinguins.tcc.backend.controllers;
 
 import br.com.pinguins.tcc.backend.dtos.LembreteDTO;
-import br.com.pinguins.tcc.backend.dtos.UsuarioDTO;
 import br.com.pinguins.tcc.backend.services.LembreteService;
 import br.com.pinguins.tcc.backend.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;

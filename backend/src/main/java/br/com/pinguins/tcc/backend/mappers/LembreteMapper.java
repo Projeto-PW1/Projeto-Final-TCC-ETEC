@@ -16,6 +16,7 @@ public class LembreteMapper {
         lembrete.setId(dto.getId());
         lembrete.setTitulo(dto.getTitulo());
         lembrete.setDataLembrete(dto.getDataLembrete());
+        lembrete.setHorarioLembrete(dto.getHorarioLembrete());
         lembrete.setDescricao(dto.getDescricao());
 
         return lembrete;
@@ -27,6 +28,7 @@ public class LembreteMapper {
         dto.setId(lembrete.getId());
         dto.setTitulo(lembrete.getTitulo());
         dto.setDataLembrete(lembrete.getDataLembrete());
+        dto.setHorarioLembrete(lembrete.getHorarioLembrete());
         dto.setDescricao(lembrete.getDescricao());
 
         return dto;

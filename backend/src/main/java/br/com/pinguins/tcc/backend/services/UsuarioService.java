@@ -8,6 +8,7 @@ import br.com.pinguins.tcc.backend.mappers.UsuarioMapper;
 import br.com.pinguins.tcc.backend.repositories.UsuarioRepository;
 import br.com.pinguins.tcc.backend.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,6 +47,9 @@ public class UsuarioService {
 
         Usuario usuario = mapper.toEntity(usuarioDTO);
 
+        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
+        usuario.setSenha(senhaCriptografada);
+
         usuarioRepository.save(usuario);
 
         return mapper.toDto(usuario);
@@ -65,8 +69,11 @@ public class UsuarioService {
                 .orElseThrow(() -> new ResourceNotFoundException(MessageUtil.MESSAGE_USER_NOT_FOUND));
 
         usuario.setNome(usuarioDTO.getNome());
-        usuario.setEmail(usuarioDTO.getEmail());
+        usuario.setLogin(usuarioDTO.getLogin());
         usuario.setSenha(usuarioDTO.getSenha());
+
+        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
+        usuario.setSenha(senhaCriptografada);
 
         usuarioRepository.save(usuario);
 

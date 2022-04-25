@@ -6,7 +6,7 @@ public class UsuarioDTO {
 
     private Integer id;
     private String nome;
-    private String email;
+    private String login;
     private String senha;
 
     public UsuarioDTO(){}
@@ -14,7 +14,7 @@ public class UsuarioDTO {
     public UsuarioDTO(Usuario usuario) {
         id = usuario.getId();
         nome = usuario.getNome();
-        email = usuario.getEmail();
+        login = usuario.getLogin();
         senha = usuario.getSenha();
     }
 
@@ -34,12 +34,12 @@ public class UsuarioDTO {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getSenha() {
@@ -49,5 +49,4 @@ public class UsuarioDTO {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
 }

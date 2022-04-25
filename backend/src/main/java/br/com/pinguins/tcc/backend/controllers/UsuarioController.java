@@ -1,12 +1,14 @@
 package br.com.pinguins.tcc.backend.controllers;
 
 import br.com.pinguins.tcc.backend.dtos.UsuarioDTO;
+import br.com.pinguins.tcc.backend.entities.Usuario;
 import br.com.pinguins.tcc.backend.services.UsuarioService;
 import br.com.pinguins.tcc.backend.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,6 +46,10 @@ public class UsuarioController {
     @PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioDTO> save(@RequestBody UsuarioDTO usuarioDTO) {
         usuarioService.save(usuarioDTO);
+
+        Usuario user = new Usuario();
+
+        user.setSenha(new BCryptPasswordEncoder().encode(usuarioDTO.getSenha()));
 
         return ResponseEntity.ok(usuarioDTO);
     }

@@ -27,23 +27,24 @@ public class Lembrete {
     private LocalDate dataLembrete;
 
     // TODO - FAZER O LOCALTIME
-    //private LocalTime horarioLembrete;
+    private LocalTime horarioLembrete;
 
     private String descricao;
 
     // TODO - FAZER O ManyToOne
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user"))
-    private Usuario usuario; */
+    private Usuario usuario;
 
     public Lembrete(){}
 
-    public Lembrete(Integer id, String titulo, LocalDate dataLembrete, String descricao, Usuario usuario) {
+    public Lembrete(Integer id, String titulo, LocalDate dataLembrete, LocalTime horarioLembrete,String descricao, Usuario usuario) {
         this.id = id;
         this.titulo = titulo;
         this.dataLembrete = dataLembrete;
+        this.horarioLembrete = horarioLembrete;
         this.descricao = descricao;
-        //this.usuario = usuario;
+        this.usuario = usuario;
     }
 
     public Integer getId() {
@@ -70,6 +71,14 @@ public class Lembrete {
         this.dataLembrete = dataLembrete;
     }
 
+    public LocalTime getHorarioLembrete() {
+        return horarioLembrete;
+    }
+
+    public void setHorarioLembrete(LocalTime horarioLembrete) {
+        this.horarioLembrete = horarioLembrete;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -78,13 +87,13 @@ public class Lembrete {
         this.descricao = descricao;
     }
 
-    /*public Usuario getUser() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUser(Usuario user) {
-        this.usuario = user;
-    }*/
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     @Override
     public boolean equals(Object o) {

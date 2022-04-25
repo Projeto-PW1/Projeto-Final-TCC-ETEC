@@ -5,7 +5,7 @@
 ## 💻 prototipação de tela
 
 ### 💥 Splash Screen
-![inicio](https://user-images.githubusercontent.com/48697810/133344029-c9aaf5b8-da3d-46b3-9b29-b6e0c80f210b.png)
+![inicio](https://user-images.githubusercontent.com/83253328/165187028-35ecbb18-4560-4e95-8295-3bf5c68ace76.png)
 
 ### 👀 Tela Principal
 ![tela principal](https://user-images.githubusercontent.com/48697810/133344535-b4cc4fe7-2f9a-4e64-8d5b-4ce8a1e8319d.png)

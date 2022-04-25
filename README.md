@@ -16,8 +16,8 @@
 ### Tela Principal
 <img src= "https://user-images.githubusercontent.com/83253328/165191687-14a8ed82-a7d1-4061-a8fb-328ea55fd544.png" width="400" height="790">
 
-### 💖 Like
-![liked](https://user-images.githubusercontent.com/48697810/133344583-07505e5b-16f4-42b8-bad6-a1958770765f.png)
+### Tela de Menu
+<img src= "https://user-images.githubusercontent.com/83253328/165191780-5ee6fbe5-eb25-460d-ad6c-e522d91581ea.png" width="400" height="790">
 
 ### 🎼 Cifra
 ![cifra](https://user-images.githubusercontent.com/48697810/133344587-24d78bbe-6262-447f-b945-f3b12ddcbb83.png)

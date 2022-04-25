@@ -13,8 +13,8 @@
 ### 👀 Tela de Cadastro
 <img src= "https://user-images.githubusercontent.com/83253328/165188950-e34fc186-c9fa-4523-a738-07e1c31c473d.png" width="400" height="790">
 
-### ▶️ Player
-![Player (1)](https://user-images.githubusercontent.com/48697810/133345461-2b9601fc-4d3b-4c78-9c2d-1464ca457707.png)
+### Tela Principal
+<img src= "https://user-images.githubusercontent.com/83253328/165191687-14a8ed82-a7d1-4061-a8fb-328ea55fd544.png" width="400" height="790">
 
 ### 💖 Like
 ![liked](https://user-images.githubusercontent.com/48697810/133344583-07505e5b-16f4-42b8-bad6-a1958770765f.png)

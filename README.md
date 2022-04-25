@@ -17,7 +17,7 @@
 <img src= "https://user-images.githubusercontent.com/83253328/165191687-14a8ed82-a7d1-4061-a8fb-328ea55fd544.png" width="400" height="790">
 
 ### Tela de Menu
-<img src= "https://user-images.githubusercontent.com/83253328/165191780-5ee6fbe5-eb25-460d-ad6c-e522d91581ea.png" width="400" height="790">
+<img src= "https://user-images.githubusercontent.com/83253328/165191780-5ee6fbe5-eb25-460d-ad6c-e522d91581ea.png" width="200" height="600">
 
 ### Tela de Adicionar Lembrete
 <img src= "https://user-images.githubusercontent.com/83253328/165191968-1a6e5379-60a8-4669-bb74-6585373dfa4c.png" width="400" height="790">

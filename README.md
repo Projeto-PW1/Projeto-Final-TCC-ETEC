@@ -5,7 +5,7 @@
 ## 💻 prototipação de tela
 
 ### 💥 Splash Screen
-![inicio]<img src="https://user-images.githubusercontent.com/83253328/165187028-35ecbb18-4560-4e95-8295-3bf5c68ace76.png" width"400" height"400">
+![inicio]<img src="https://user-images.githubusercontent.com/83253328/165187028-35ecbb18-4560-4e95-8295-3bf5c68ace76.png" width="400" height="790">
 
 ### 👀 Tela de Login
 ![tela principal](https://user-images.githubusercontent.com/83253328/165187549-c6f77fab-69d5-4886-8ab8-d16e2d690495.png)

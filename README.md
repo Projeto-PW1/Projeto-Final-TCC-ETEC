@@ -19,5 +19,6 @@
 ### Tela de Menu
 <img src= "https://user-images.githubusercontent.com/83253328/165191780-5ee6fbe5-eb25-460d-ad6c-e522d91581ea.png" width="400" height="790">
 
-### 🎼 Cifra
-![cifra](https://user-images.githubusercontent.com/48697810/133344587-24d78bbe-6262-447f-b945-f3b12ddcbb83.png)
+### Tela de Adicionar Lembrete
+<img src= "https://user-images.githubusercontent.com/83253328/165191968-1a6e5379-60a8-4669-bb74-6585373dfa4c.png" width="400" height="790">
+

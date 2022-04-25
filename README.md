@@ -1,6 +1,6 @@
 # 📚 👩‍💻 TCC - Grupo 4
 
-## ProjetosPAM1
+## ProjetosDrugDrug ✨
 
 ## 💻 prototipação de tela
 

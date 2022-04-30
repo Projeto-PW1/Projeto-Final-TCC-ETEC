@@ -39,17 +39,20 @@ public class Usuario implements UserDetails {
     @Column(nullable = false, length = 70)
     private String senha;
 
+    private String token = "";
+
    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Lembrete> lembretes;
 
     public Usuario(){}
 
-    public Usuario(Integer id, String nome, String email, String senha, List<Lembrete> lembretes) {
+    public Usuario(Integer id, String nome, String email, String senha, String token, List<Lembrete> lembretes) {
         this.id = id;
         this.nome = nome;
         this.senha = senha;
         this.login = email;
+        this.token = token;
         this.lembretes = lembretes;
     }
 
@@ -83,6 +86,14 @@ public class Usuario implements UserDetails {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public List<Lembrete> getLembretes() {

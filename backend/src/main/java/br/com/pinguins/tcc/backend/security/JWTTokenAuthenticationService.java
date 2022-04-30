@@ -3,6 +3,8 @@ package br.com.pinguins.tcc.backend.security;
 import br.com.pinguins.tcc.backend.ApplicationContextLoad;
 import br.com.pinguins.tcc.backend.entities.Usuario;
 import br.com.pinguins.tcc.backend.repositories.UsuarioRepository;
+import br.com.pinguins.tcc.backend.utils.MessageUtil;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,7 +15,6 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 
 @Service
@@ -47,30 +48,49 @@ public class JWTTokenAuthenticationService {
         // add o cabeçalho http
         response.addHeader(HEADER_STRING, token);
 
+        ApplicationContextLoad
+                .getApplicationContext()
+                .getBean(UsuarioRepository.class)
+                .updateTokenUser(JWT, username);
+
         // escreve o token como resposta do corpo http - JSON
         response.getWriter().write("{\"Authorization\": \""+ token+"\"}");
     }
 
     /* Retorna o usuario validado(token)*/
 
-    public Authentication getAuthentication(HttpServletRequest request) {
+    public Authentication getAuthentication(HttpServletRequest request, HttpServletResponse response) {
 
-        String token = request.getHeader(HEADER_STRING);
+         String token = request.getHeader(HEADER_STRING);
 
-        if (token != null) {
-            // Faz a validação do token do user;
-            String user = Jwts.parser().setSigningKey(SECRET)// Bearer.k8ak8ak8sa85akda043fakfDFSFSD
-                    .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
-                    .getBody().getSubject();
-            if (user != null) {
-                Usuario usuario = ApplicationContextLoad
-                        .getApplicationContext()
-                        .getBean(UsuarioRepository.class)
-                        .findUsuarioByLogin(user);
-                if (usuario != null) {
-                    return  new UsernamePasswordAuthenticationToken(
-                            usuario.getLogin(), usuario.getSenha(), usuario.getAuthorities());
+        try {
+            if (token != null) {
+
+                String cleanToken = token.replace(TOKEN_PREFIX, "").trim();
+
+                // Faz a validação do token do user;
+                String user = Jwts.parser().setSigningKey(SECRET)// Bearer.k8ak8ak8sa85akda043fakfDFSFSD
+                        .parseClaimsJws(cleanToken)
+                        .getBody().getSubject();
+                if (user != null) {
+                    Usuario usuario = ApplicationContextLoad
+                            .getApplicationContext()
+                            .getBean(UsuarioRepository.class)
+                            .findUsuarioByLogin(user);
+
+                    if (usuario != null) {
+                        if (cleanToken.equalsIgnoreCase(usuario.getToken())) {
+                            return new UsernamePasswordAuthenticationToken(
+                                    usuario.getLogin(), usuario.getSenha(), usuario.getAuthorities());
+                        }
+                    }
                 }
+            }
+        } catch (ExpiredJwtException e) {
+            try {
+                response.getOutputStream().println(MessageUtil.MESSAGE_EXPIRED_TOKEN);
+            } catch (Exception ex){
+                ex.printStackTrace();
             }
         }
         return null; // Não autorizado

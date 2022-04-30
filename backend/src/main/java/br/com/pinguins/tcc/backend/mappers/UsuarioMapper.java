@@ -13,7 +13,6 @@ public class UsuarioMapper {
     public Usuario toEntity(UsuarioDTO dto) {
         Usuario usuario = new Usuario();
 
-        usuario.setId(dto.getId());
         usuario.setNome(dto.getNome());
         usuario.setLogin(dto.getLogin());
         usuario.setSenha(dto.getSenha());
@@ -23,7 +22,6 @@ public class UsuarioMapper {
     public UsuarioDTO toDto(Usuario usuario) {
         UsuarioDTO dto = new UsuarioDTO();
 
-        dto.setId(usuario.getId());
         dto.setNome(usuario.getNome());
         dto.setLogin(usuario.getLogin());
         dto.setSenha(usuario.getSenha());

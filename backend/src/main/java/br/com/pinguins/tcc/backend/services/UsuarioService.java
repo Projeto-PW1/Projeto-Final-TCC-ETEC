@@ -72,6 +72,7 @@ public class UsuarioService {
         usuario.setLogin(usuarioDTO.getLogin());
         usuario.setSenha(usuarioDTO.getSenha());
 
+
         String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
         usuario.setSenha(senhaCriptografada);
 

@@ -4,26 +4,19 @@ import br.com.pinguins.tcc.backend.entities.Usuario;
 
 public class UsuarioDTO {
 
-    private Integer id;
+
     private String nome;
     private String login;
     private String senha;
 
+
     public UsuarioDTO(){}
 
     public UsuarioDTO(Usuario usuario) {
-        id = usuario.getId();
         nome = usuario.getNome();
         login = usuario.getLogin();
         senha = usuario.getSenha();
-    }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -49,4 +42,6 @@ public class UsuarioDTO {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+
 }

@@ -2,13 +2,17 @@ package br.com.pinguins.tcc.backend.dtos;
 
 import br.com.pinguins.tcc.backend.entities.Usuario;
 
+import javax.validation.constraints.Email;
+
 public class UsuarioDTO {
 
 
     private String nome;
-    private String login;
-    private String senha;
 
+    @Email
+    private String login;
+
+    private String senha;
 
     public UsuarioDTO(){}
 
@@ -42,6 +46,4 @@ public class UsuarioDTO {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-
 }

@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
 
 import java.util.Collection;
 import java.util.List;
@@ -34,6 +35,7 @@ public class Usuario implements UserDetails {
     private String nome;
 
     @Column(nullable = false, length = 50, unique = true)
+    @Email
     private String login;
 
     @Column(nullable = false, length = 70)

@@ -16,8 +16,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Modifying
     @Query(nativeQuery = true, value = "UPDATE usuario SET token = ?1 WHERE login = ?2")
     void updateTokenUser(String token, String login);
-
-    @Query(nativeQuery = true, value = "INSERT INTO usuario(token, login) values (?1, ?2)")
-    void insertTokenUser(String token, String login);
-
 }

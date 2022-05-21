@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class BackendApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(BackendApplication.class, args);
-        System.out.println(new BCryptPasswordEncoder().encode("123"));
     }
 
     @Override

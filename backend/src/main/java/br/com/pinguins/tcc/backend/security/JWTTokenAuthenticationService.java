@@ -28,7 +28,7 @@ public class JWTTokenAuthenticationService {
     private static final String SECRET = "SenhaSecreta";
 
     // Prefixo padrão de token
-    private static final String TOKEN_PREFIX = "Bearer"; // Bearer k8ak8ak8sa85akda043fakfDFSFSD
+    private static final String TOKEN_PREFIX = "Bearer"; // Bearer akdoadaokdaokdoakdo
 
     private static final String HEADER_STRING = "Authorization";
 

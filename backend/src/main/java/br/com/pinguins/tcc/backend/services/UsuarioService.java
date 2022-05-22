@@ -79,4 +79,22 @@ public class UsuarioService {
 
         return mapper.toDto(usuario);
     }
+
+    @Transactional
+    public UsuarioDTO updateByPassword(String email, UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioRepository.findUsuarioByLogin(email);
+
+        if (usuario != null) {
+            usuario.setSenha(usuarioDTO.getSenha());
+
+            String senhaCripto = new BCryptPasswordEncoder().encode(usuario.getSenha());
+
+            usuario.setSenha(senhaCripto);
+            usuarioRepository.save(usuario);
+
+            return mapper.toDto(usuario);
+        } else {
+            throw new ResourceNotFoundException(MessageUtil.MESSAGE_EMAIL_NOT_FOUND);
+        }
+    }
 }

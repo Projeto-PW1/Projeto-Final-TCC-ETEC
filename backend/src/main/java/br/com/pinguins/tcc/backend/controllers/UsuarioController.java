@@ -67,4 +67,11 @@ public class UsuarioController {
 
         return ResponseEntity.status(HttpStatus.OK).body(MessageUtil.MESSAGE_DELETE_SUCCESS);
     }
+    @PutMapping(value = "updateSenha/{email}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UsuarioDTO> updateByPassword(@PathVariable("email") String email, @RequestBody UsuarioDTO user) {
+        UsuarioDTO usuarioDTO = usuarioService.updateByPassword(email, user);
+
+        return ResponseEntity.ok().body(usuarioDTO);
+    }
+
 }

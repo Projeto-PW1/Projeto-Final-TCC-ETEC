@@ -20,7 +20,6 @@ public class UsuarioDTO {
         nome = usuario.getNome();
         login = usuario.getLogin();
         senha = usuario.getSenha();
-
     }
 
     public String getNome() {

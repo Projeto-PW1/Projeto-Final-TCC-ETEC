@@ -1,6 +1,7 @@
 package br.com.pinguins.tcc.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -41,21 +42,22 @@ public class Usuario implements UserDetails {
     @Column(nullable = false, length = 70)
     private String senha;
 
+    @JsonIgnore
     private String token = "";
 
-   @JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Lembrete> lembretes;
+    private List<Remedio> remedios;
 
     public Usuario(){}
 
-    public Usuario(Integer id, String nome, String email, String senha, String token, List<Lembrete> lembretes) {
+    public Usuario(Integer id, String nome, String email, String senha, String token, List<Remedio> remedios) {
         this.id = id;
         this.nome = nome;
         this.senha = senha;
         this.login = email;
         this.token = token;
-        this.lembretes = lembretes;
+        this.remedios = remedios;
     }
 
     public Integer getId() {
@@ -98,11 +100,16 @@ public class Usuario implements UserDetails {
         this.token = token;
     }
 
-    public List<Lembrete> getLembretes() {
-        return lembretes;
+    public List<Remedio> getRemedios() {
+        return remedios;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
     }
 
     @OneToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
     @JoinTable(name = "usuarios_role",uniqueConstraints = @UniqueConstraint(
             columnNames = { "usuario_id", "role_id" },
             name = "unique_role_user"), joinColumns = { @JoinColumn(name = "usuario_id",
@@ -116,6 +123,48 @@ public class Usuario implements UserDetails {
     private List<Role> roles;
 
     @Override
+    @JsonIgnore
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
+    @Override
+    @JsonIgnore
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    @JsonIgnore
+    public String getUsername() {
+        return this.login;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -126,40 +175,5 @@ public class Usuario implements UserDetails {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.senha;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.login;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }

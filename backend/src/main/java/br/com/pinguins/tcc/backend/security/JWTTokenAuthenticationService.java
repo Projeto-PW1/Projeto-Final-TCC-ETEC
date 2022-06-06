@@ -43,7 +43,7 @@ public class JWTTokenAuthenticationService {
                 .signWith(SignatureAlgorithm.HS512, SECRET).compact();
 
         // Juntando o token com o prefixo
-        String token = TOKEN_PREFIX + " " + JWT;
+        String token = JWT;
 
         // add o cabeçalho http
         response.addHeader(HEADER_STRING, token);

@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface RemedioRepository extends JpaRepository<Remedio, Integer> {
 
-    @Query("SELECT n FROM Remedio as n WHERE n.nome LIKE %?1")
+    @Query("SELECT n FROM Remedio as n WHERE n.titulo LIKE %?1")
     List<Remedio> findByNome(String nome);
 }

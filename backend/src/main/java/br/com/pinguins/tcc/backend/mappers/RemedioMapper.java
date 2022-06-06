@@ -13,10 +13,11 @@ public class RemedioMapper {
     public Remedio toEntity(RemedioDTO dto) {
         Remedio remedio = new Remedio();
 
-        remedio.setId(dto.getId());
-        remedio.setId(dto.getId());
-        remedio.setNome(dto.getNome());
-        remedio.setDescricao(dto.getDescricao());
+        remedio.setTitulo(dto.getTitulo());
+        remedio.setQuantidadeMedicamento(dto.getQuantidadeMedicamento());
+        remedio.setDataLembreteRemedio(dto.getDataLembreteRemedio());
+        remedio.setHorarioLembreteRemedio(dto.getHorarioLembreteRemedio());
+        remedio.setUsuario(dto.getUserId());
 
         return remedio;
     }
@@ -24,10 +25,12 @@ public class RemedioMapper {
     public RemedioDTO toDto(Remedio remedio) {
         RemedioDTO dto = new RemedioDTO();
 
-        dto.setId(remedio.getId());
-        dto.setId(remedio.getId());
-        dto.setNome(remedio.getNome());
-        dto.setDescricao(remedio.getDescricao());
+        dto.setTitulo(dto.getTitulo());
+        dto.setQuantidadeMedicamento(remedio.getQuantidadeMedicamento());
+        dto.setDataLembreteRemedio(remedio.getDataLembreteRemedio());
+        dto.setHorarioLembreteRemedio(remedio.getHorarioLembreteRemedio());
+        dto.setUserId(dto.getUserId());
+
         return dto;
     }
 

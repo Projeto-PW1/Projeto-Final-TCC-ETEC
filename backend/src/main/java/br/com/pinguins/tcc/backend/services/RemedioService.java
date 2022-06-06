@@ -37,10 +37,10 @@ public class RemedioService {
 
         List<RemedioDTO> remedioDTOS = mapper.dtoList(repository.findByNome(nome));
         if (remedioDTOS.stream().noneMatch(x -> x.equals(nome))){
+            return remedioDTOS;
+        } else {
             throw new BusinessException(MessageUtil.MESSAGE_USER_NOT_FOUND);
         }
-
-        return remedioDTOS;
     }
 
     @Transactional
@@ -65,8 +65,10 @@ public class RemedioService {
         Remedio remedio = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(MessageUtil.MESSAGE_USER_NOT_FOUND));
 
-        remedio.setNome(dto.getNome());
-        remedio.setDescricao(dto.getDescricao());
+        remedio.setTitulo(dto.getTitulo());
+        remedio.setQuantidadeMedicamento(dto.getQuantidadeMedicamento());
+        remedio.setDataLembreteRemedio(dto.getDataLembreteRemedio());
+        remedio.setHorarioLembreteRemedio(dto.getHorarioLembreteRemedio());
 
         return mapper.toDto(remedio);
     }

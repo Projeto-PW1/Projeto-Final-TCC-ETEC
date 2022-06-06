@@ -1,10 +1,17 @@
 package br.com.pinguins.tcc.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
 @Entity
@@ -15,16 +22,32 @@ public class Remedio {
     private Integer id;
 
     @Column(nullable = false)
-    private String nome;
+    private String titulo;
 
-    private String descricao;
+    @Column(length = 45, nullable = false)
+    private Integer quantidadeMedicamento;
+
+    @Column(nullable = false)
+    private LocalDate dataLembreteRemedio;
+
+    @Column(nullable = false)
+    private LocalTime horarioLembreteRemedio;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user"))
+    @JsonIgnoreProperties({"nome", "login", "senha", "token"})
+    private Usuario usuario;
+
 
     public Remedio(){}
 
-    public Remedio(Integer id, String nome, String descricao) {
+    public Remedio(Integer id, String titulo, Integer quantidadeMedicamento, LocalDate dataLembreteRemedio, LocalTime horarioLembreteRemedio, Usuario usuario) {
         this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
+        this.titulo = titulo;
+        this.quantidadeMedicamento = quantidadeMedicamento;
+        this.dataLembreteRemedio = dataLembreteRemedio;
+        this.horarioLembreteRemedio = horarioLembreteRemedio;
+        this.usuario = usuario;
     }
 
     public Integer getId() {
@@ -35,20 +58,44 @@ public class Remedio {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Integer getQuantidadeMedicamento() {
+        return quantidadeMedicamento;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setQuantidadeMedicamento(Integer quantidadeMedicamento) {
+        this.quantidadeMedicamento = quantidadeMedicamento;
+    }
+
+    public LocalDate getDataLembreteRemedio() {
+        return dataLembreteRemedio;
+    }
+
+    public void setDataLembreteRemedio(LocalDate dataLembreteRemedio) {
+        this.dataLembreteRemedio = dataLembreteRemedio;
+    }
+
+    public LocalTime getHorarioLembreteRemedio() {
+        return horarioLembreteRemedio;
+    }
+
+    public void setHorarioLembreteRemedio(LocalTime horarioLembreteRemedio) {
+        this.horarioLembreteRemedio = horarioLembreteRemedio;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

@@ -2,10 +2,12 @@ package br.com.pinguins.tcc.backend.services;
 
 import br.com.pinguins.tcc.backend.dtos.RemedioDTO;
 import br.com.pinguins.tcc.backend.entities.Remedio;
+import br.com.pinguins.tcc.backend.entities.Usuario;
 import br.com.pinguins.tcc.backend.exceptions.BusinessException;
 import br.com.pinguins.tcc.backend.exceptions.ResourceNotFoundException;
 import br.com.pinguins.tcc.backend.mappers.RemedioMapper;
 import br.com.pinguins.tcc.backend.repositories.RemedioRepository;
+import br.com.pinguins.tcc.backend.repositories.UsuarioRepository;
 import br.com.pinguins.tcc.backend.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +19,15 @@ import java.util.List;
 public class RemedioService {
 
     private final RemedioRepository repository;
+    private final UsuarioRepository usuarioRepository;
     private final RemedioMapper mapper;
 
     @Autowired
-    public RemedioService(RemedioRepository repository, RemedioMapper mapper) {
+    public RemedioService(RemedioRepository repository, RemedioMapper mapper, UsuarioRepository usuarioRepository) {
         this.repository = repository;
         this.mapper = mapper;
+        this.usuarioRepository = usuarioRepository;
+
     }
 
     @Transactional(readOnly = true)
@@ -72,4 +77,14 @@ public class RemedioService {
 
         return mapper.toDto(remedio);
     }
+
+    public Remedio addRemedioUser(Remedio remedio, Integer id) {
+
+        Usuario usuario = usuarioRepository.findById(id).get();
+        remedio.setUsuario(usuario);
+        repository.save(remedio);
+
+        return remedio;
+    }
+
 }

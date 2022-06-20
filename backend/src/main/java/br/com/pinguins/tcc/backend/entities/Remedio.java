@@ -1,5 +1,6 @@
 package br.com.pinguins.tcc.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Column;
@@ -35,9 +36,7 @@ public class Remedio {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_user"))
-    @JsonIgnoreProperties({"nome", "login", "senha", "token"})
     private Usuario usuario;
-
 
     public Remedio(){}
 
@@ -48,6 +47,9 @@ public class Remedio {
         this.dataLembreteRemedio = dataLembreteRemedio;
         this.horarioLembreteRemedio = horarioLembreteRemedio;
         this.usuario = usuario;
+    }
+
+    public Remedio(int i, String remedii, int i1, String s, String s1) {
     }
 
     public Integer getId() {

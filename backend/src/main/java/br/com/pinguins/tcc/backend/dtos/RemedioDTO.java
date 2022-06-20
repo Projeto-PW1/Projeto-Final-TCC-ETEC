@@ -2,6 +2,7 @@ package br.com.pinguins.tcc.backend.dtos;
 
 import br.com.pinguins.tcc.backend.entities.Remedio;
 import br.com.pinguins.tcc.backend.entities.Usuario;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -11,7 +12,10 @@ public class RemedioDTO {
     private Integer id;
     private String titulo;
     private Integer quantidadeMedicamento;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataLembreteRemedio;
+
+    @JsonFormat(pattern = "HH:mm")
     private LocalTime horarioLembreteRemedio;
     private Usuario userId;
 

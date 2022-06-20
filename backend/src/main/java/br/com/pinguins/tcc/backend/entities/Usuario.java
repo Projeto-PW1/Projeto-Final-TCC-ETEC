@@ -2,6 +2,7 @@ package br.com.pinguins.tcc.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,9 +21,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Usuario implements UserDetails {
@@ -45,13 +44,13 @@ public class Usuario implements UserDetails {
     @JsonIgnore
     private String token = "";
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Remedio> remedios;
+    private Set<Remedio> remedios = new HashSet<>();
 
     public Usuario(){}
 
-    public Usuario(Integer id, String nome, String email, String senha, String token, List<Remedio> remedios) {
+    public Usuario(Integer id, String nome, String email, String senha, String token, Set<Remedio> remedios) {
         this.id = id;
         this.nome = nome;
         this.senha = senha;
@@ -100,7 +99,11 @@ public class Usuario implements UserDetails {
         this.token = token;
     }
 
-    public List<Remedio> getRemedios() {
+    public void setRemedios(Set<Remedio> remedios) {
+        this.remedios = remedios;
+    }
+
+    public Set<Remedio> getRemedios() {
         return remedios;
     }
 
@@ -117,9 +120,9 @@ public class Usuario implements UserDetails {
             table = "usuario", foreignKey = @ForeignKey(name = "usuario_fk"))},
 
             inverseJoinColumns = { @JoinColumn(name = "role_id",
-            referencedColumnName = "id", updatable = false,
-            table = "role", foreignKey = @ForeignKey(name = "role_fk", value = ConstraintMode.CONSTRAINT)
-    )})
+                    referencedColumnName = "id", updatable = false,
+                    table = "role", foreignKey = @ForeignKey(name = "role_fk", value = ConstraintMode.CONSTRAINT)
+            )})
     private List<Role> roles;
 
     @Override

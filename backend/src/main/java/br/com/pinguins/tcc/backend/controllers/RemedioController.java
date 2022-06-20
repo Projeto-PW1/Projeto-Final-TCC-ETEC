@@ -1,6 +1,9 @@
 package br.com.pinguins.tcc.backend.controllers;
 
 import br.com.pinguins.tcc.backend.dtos.RemedioDTO;
+import br.com.pinguins.tcc.backend.entities.Remedio;
+import br.com.pinguins.tcc.backend.entities.Usuario;
+import br.com.pinguins.tcc.backend.repositories.UsuarioRepository;
 import br.com.pinguins.tcc.backend.services.RemedioService;
 import br.com.pinguins.tcc.backend.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;

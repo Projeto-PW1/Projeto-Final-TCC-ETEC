@@ -44,6 +44,13 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioDTO);
     }
 
+    @GetMapping(value = "/email/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UsuarioDTO> findUsuarioByLogin(@PathVariable("email") String email) {
+        UsuarioDTO usuarioDTO = usuarioService.findUsuarioByLogin(email);
+
+        return ResponseEntity.ok(usuarioDTO);
+    }
+
     @PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioDTO> save(@RequestBody @Valid UsuarioDTO usuarioDTO) {
         usuarioService.save(usuarioDTO);

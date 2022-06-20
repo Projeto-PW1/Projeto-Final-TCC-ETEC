@@ -41,6 +41,17 @@ public class UsuarioService {
                 .orElseThrow(() -> new ResourceNotFoundException(MessageUtil.MESSAGE_USER_NOT_FOUND));
     }
 
+    @Transactional
+    public UsuarioDTO findUsuarioByLogin(String email) {
+        Usuario usuario = usuarioRepository.findUsuarioByLogin(email);
+
+        if (usuario != null) {
+            return mapper.toDto(usuario);
+        } else {
+            throw new ResourceNotFoundException(MessageUtil.MESSAGE_EMAIL_NOT_FOUND);
+        }
+    }
+
 
     @Transactional
     public UsuarioDTO save(UsuarioDTO usuarioDTO) {

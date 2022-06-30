@@ -1,6 +1,7 @@
-import Cadastro from './src/Components/Cadastro';
-import Login from './src/Components/Login';
+import Rotas from './src/Rotas';
 
-const App = () => <Login/>;
+//Definindo o arquivo de Rotas como 'main'
+const App = () => <Rotas/>;
 
 export default App;
+

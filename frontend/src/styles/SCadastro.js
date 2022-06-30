@@ -1,78 +1,92 @@
 import {StyleSheet} from 'react-native';
-import { textDecorationColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: '100%',
+    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   container2: {
-    flex: 0.7,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fffceb',
-    width: '83%',
+    backgroundColor: 'white',
+    width: '90%',
     borderRadius: 25,
     elevation: 2,
+    paddingHorizontal: 15,
   },
-  text:{
-    color: '#626262',
+  text: {
+    color: "#2a2a2a",
+    fontSize: 15,
+    fontWeight: '700'
   },
   title: {
       fontSize: 25,
       margin: 25,
-      color: '#f9dc5c',
+      marginTop: 30,
+      color: '#2a2a2a',
       fontWeight: '700',
       textShadowRadius: 2,
-      textShadowColor: "#fae588"
+      textShadowColor: "#fae588",
+      alignSelf: 'center',
+  },
+  viewInput:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 10,
+    marginRight: 20, 
   },
   input: {
-      backgroundColor: 'white',
-      borderRadius: 10,
-      width: 250,
-      padding: 10,
-      marginTop: 10,
-      elevation: 2,
+    borderRadius: 10,
+    width: 250,
+    padding: 10,
+    marginTop: 10,
+    alignSelf: "center",
+  },
+  inputError: {
+    fontSize: 13,
+    alignSelf: 'flex-start',
+    color: '#ff375b',
+    marginBottom: 5,
   },
   image: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     width: '100%',
     height: '100%'
   },
   botao: {
-      backgroundColor: '#f9dc5c',
+      backgroundColor: '#fae278',
       padding: 13,
-      margin: 27,
-      width: 110,
+      margin: 30,
+      width: 280,
       alignItems: 'center',
-      borderRadius: 11,
+      borderRadius: 10,
       elevation: 1,
+      alignSelf: 'center'
   },
-  //style do botão "Já tem uma conta?"
+  scroll: {
+    width: '100%',
+  },
+  //Botão "Já tem uma conta?"
   botao2: {
-    backgroundColor: '#fffceb',
     padding: 5,
-    width: 150,
+    width: 200,
     alignItems: 'center',
     borderRadius: 10,
   },
-  //style da View do botão "Já tem uma conta?"
   viewB: {
-      justifyContent: 'center',
-      alignSelf: 'flex-end',
-      marginTop: 5,
-      marginEnd: 10,
-  },
-  //text do botao "Já tem uma conta?"
-  text2:{
-    color: '#f9dc5c',
-    textDecorationLine: 'underline',
-    fontWeight: '700'
+    justifyContent: "center",
+    alignSelf: "center",
+    marginBottom: 30,
   },
 
+  text2:{
+    color: '#2a2a2a',
+    fontWeight: '700'
+  },
+ 
 });
 
 export default styles;

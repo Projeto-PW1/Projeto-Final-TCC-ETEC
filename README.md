@@ -1,4 +1,4 @@
-# 📚 👩‍💻 TCC - Grupo 4
+# 📚 👩‍💻 TCC - Grupo 4 - ETEC DE BARUERI
 
 ## ProjetosDrugDrug 💊
 
